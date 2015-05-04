@@ -1,5 +1,6 @@
 # JsonParser
-This application parse following formatted Json
+This application uses the simple-json-1.1.1.jar library from google to read, parse and write the Json. It will parse following formatted Json
+
 <code>
 [
 {
