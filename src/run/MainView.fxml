@@ -6,10 +6,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="300.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<AnchorPane prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="run.MainViewController">
    <children>
-      <Button layoutX="49.0" layoutY="60.0" mnemonicParsing="false" text="Choose Your File" />
+      <Button fx:id="chooseFileButton" layoutX="49.0" layoutY="60.0" mnemonicParsing="false" onAction="#handleNewFile" text="Choose Your File" />
       <Label layoutX="21.0" layoutY="38.0" text="Please Choose your Json File" />
       <Label fx:id="displayLoc" layoutX="196.0" layoutY="55.0" prefHeight="36.0" prefWidth="294.0" />
       <Button layoutX="411.0" layoutY="221.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="106.0" text="Run">
