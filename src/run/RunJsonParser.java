@@ -14,10 +14,11 @@ public class RunJsonParser {
 
 	public static void main(String[] args) {
 		//reading the json file 
-		ReadJsonFile.parseJsonFile(new File("C:\\Users\\vivek.subedi\\Desktop\\school.json"));
+		ReadJsonFile readJsonFile = new ReadJsonFile();
+		readJsonFile.parseJsonFile(new File("C:\\Users\\vivek.subedi\\Desktop\\school.json"));
 		
 		//getting the hashmap that is created using json objects
-		HashMap<Long, HashMap<String, Object>> data = ReadJsonFile.getFinalHashMap();
+		HashMap<Long, HashMap<String, Object>> data = readJsonFile.getFinalHashMap();
 		System.out.println(data.size());
 		
 		//writing json object to the file

@@ -18,10 +18,10 @@ import org.json.simple.parser.ParseException;
 public class ReadJsonFile {
 	
 	//local variable
-	private static HashMap<Long, HashMap<String, Object>> finalHashMap = new HashMap<>();
+	private HashMap<Long, HashMap<String, Object>> finalHashMap = new HashMap<>();
 	
 	@SuppressWarnings("unchecked")
-	public static void parseJsonFile(File file) {
+	public void parseJsonFile(File file) {
 		
 		//json parser object
 		JSONParser parser = new JSONParser();
@@ -63,7 +63,7 @@ public class ReadJsonFile {
 		}
 	}
 
-	public static HashMap<Long, HashMap<String, Object>> getFinalHashMap() {
+	public HashMap<Long, HashMap<String, Object>> getFinalHashMap() {
 		return finalHashMap;
 	}
 	
