@@ -1,5 +1,6 @@
 package run;
 
+import java.awt.Component;
 import java.io.File;
 import java.util.HashMap;
 
@@ -18,6 +19,9 @@ public class MainViewController {
 	
 	@FXML
     private Button chooseFileButton; //Value injected by FXMLLoader
+	
+	@FXML
+	private Button outputButton;
 	
 	@FXML
 	private Label displayLoc;
@@ -63,7 +67,38 @@ public class MainViewController {
 			Alert alert = new Alert(AlertType.INFORMATION);
 	        alert.setTitle("Ooops, file is missing!");
 	        alert.setHeaderText(null);
-	        alert.setContentText("Please provide the files");
+	        alert.setContentText("Please provide the input json file");
+
+	        alert.showAndWait();
+		}
+    	
+	}
+    
+    @FXML
+	public void handleOutputFile() {
+
+    	FileChooser fileChooser = new FileChooser();
+    	fileChooser.setTitle("Please Choose json File");
+    	
+    	//assigning the initial directory
+    	fileChooser.setInitialDirectory(
+           new File(System.getProperty("user.home"))
+         );
+    	
+    	//file extensions
+    	fileChooser.getExtensionFilters().addAll(
+            new FileChooser.ExtensionFilter("JSON", "*.json")
+        );
+    	java.util.Date date= new java.util.Date();
+    	fileChooser.setInitialFileName(String.valueOf(date.getTime()));
+    	File jsonFile = fileChooser.showSaveDialog(stage);
+    	if (jsonFile != null) {
+    		outputFileName.setText(jsonFile.getPath());
+		} else {
+			Alert alert = new Alert(AlertType.INFORMATION);
+	        alert.setTitle("Ooops, file is missing!");
+	        alert.setHeaderText(null);
+	        alert.setContentText("Please provide the name for output");
 
 	        alert.showAndWait();
 		}
@@ -72,13 +107,15 @@ public class MainViewController {
     
     @FXML
     public void handleRun(){
+    	disableButtons();
     	if(displayLoc.getText().isEmpty()){
     		Alert alert = new Alert(AlertType.INFORMATION);
 	        alert.setTitle("Ooops, file is missing!");
 	        alert.setHeaderText(null);
-	        alert.setContentText("Please provide the file");
+	        alert.setContentText("Please provide the input json file");
 
 	        alert.showAndWait();
+	        unDisableButtons();
     	} else if (outputFileName.getText().isEmpty()){
     		Alert alert = new Alert(AlertType.INFORMATION);
 	        alert.setTitle("Ooops, output file name is missing!");
@@ -86,6 +123,7 @@ public class MainViewController {
 	        alert.setContentText("Please provide the output file name");
 
 	        alert.showAndWait();
+	        unDisableButtons();
     	} else {
     		//reading the json file 
     		ReadJsonFile readJsonFile = new ReadJsonFile();
@@ -97,7 +135,21 @@ public class MainViewController {
     		
     		//writing json object to the file
     		CreateJsonFile.writeJsonData(new File(outputFileName.getText()), data);
+    		unDisableButtons();
     	}
     }
+
+	private void unDisableButtons() {
+		chooseFileButton.setDisable(false);
+		outputButton.setDisable(false);
+		outputFileName.setDisable(false);
+		
+	}
+
+	private void disableButtons() {
+		chooseFileButton.setDisable(true);
+		outputButton.setDisable(true);
+		outputFileName.setDisable(true);
+	}
 
 }
