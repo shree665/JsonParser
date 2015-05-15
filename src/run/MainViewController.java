@@ -1,6 +1,5 @@
 package run;
 
-import java.awt.Component;
 import java.io.File;
 import java.util.HashMap;
 
