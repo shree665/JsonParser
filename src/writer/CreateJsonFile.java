@@ -32,7 +32,6 @@ public class CreateJsonFile {
 		    JSONObject thirdObject = new JSONObject();;
 		    for (Entry<String, Object> jsonObjectElement : value.entrySet()) {
 				if (jsonObjectElement.getValue() != null) {
-					//System.out.println(jsonObjectElement.getKey()+": "+jsonObjectElement.getValue());
 					thirdObject.put(jsonObjectElement.getKey(), jsonObjectElement.getValue());
 				} else {
 					thirdObject.put(jsonObjectElement.getKey(), "Undefined");
