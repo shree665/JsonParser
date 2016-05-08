@@ -3,8 +3,6 @@ package run;
 import java.io.File;
 import java.util.HashMap;
 
-import reader.ReadJsonFile;
-import writer.CreateJsonFile;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -13,6 +11,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import reader.ReadJsonFile;
+import writer.CreateJsonFile;
 
 public class MainViewController {
 	
